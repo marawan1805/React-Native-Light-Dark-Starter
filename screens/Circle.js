@@ -1,40 +1,93 @@
 import { View, Text, SafeAreaView } from "react-native";
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useContext } from "react";
 import GroupChat from "./GroupChat";
 import GroupMeet from "./GroupMeet";
+import SettingsScreen from "./Settings";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import { Ionicons, Entypo } from "@expo/vector-icons";
+import { colors } from "../config/theme";
+import { ThemeContext } from "../context/ThemeContext";
 
-const Tab = createBottomTabNavigator();
-
-const Circle = () => {
+const Drawer = createDrawerNavigator();
+function Logout({ navigation }) {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-          let iconColor;
-          if (route.name === "Chat") {
-            iconName = focused
-              ? "ios-chatbubble-sharp"
-              : "ios-chatbubble-outline";
-            iconColor = focused ? "blue" : "gray";
-          } else if (route.name === "Meet") {
-            iconName = focused ? "people-sharp" : "people-outline";
-            iconColor = focused ? "blue" : "gray";
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={24} color={iconColor} />;
+    //TODO: Add Modal: are you sure you wanna logout?
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Button onPress={() => navigation.navigate("Login")} title="Logout" />
+    </View>
+  );
+}
+const Circle = () => {
+  const { theme } = useContext(ThemeContext);
+  let activeColors = colors[theme.mode];
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: activeColors.primary,
+          width: 240,
         },
-        tabBarActiveTintColor: "blue",
-        tabBarInactiveTintColor: "gray",
-      })}
+        headerStyle: {
+          backgroundColor: activeColors.primary,
+        },
+
+        headerTitleStyle: {
+          color: "grey",
+        },
+      }}
+      useLegacyImplementation
+      initialRouteName="Home"
+      drawerContent={(props) => {
+        return (
+          <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+            <DrawerItem
+              icon={() => (
+                <Ionicons name="log-out-outline" size={24} color="red" />
+              )}
+              label="Logout"
+              inactiveTintColor="red"
+              onPress={() => props.navigation.navigate("Login")}
+            />
+          </DrawerContentScrollView>
+        );
+      }}
     >
-      <Tab.Screen name="Chat" component={GroupChat} />
-      <Tab.Screen name="Meet" component={GroupMeet} />
-    </Tab.Navigator>
+      <Drawer.Screen
+        name="Chat"
+        component={GroupChat}
+        options={{
+          drawerInactiveTintColor: "grey",
+
+          drawerIcon: ({ focused }) => (
+            <Ionicons
+              name="chatbox-ellipses-outline"
+              size={24}
+              color={focused ? "blue" : "grey"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Meet"
+        component={GroupMeet}
+        options={{
+          drawerInactiveTintColor: "grey",
+          drawerIcon: ({ focused }) => (
+            <Ionicons
+              name="videocam-outline"
+              size={24}
+              color={focused ? "blue" : "grey"}
+            />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
   );
 };
 

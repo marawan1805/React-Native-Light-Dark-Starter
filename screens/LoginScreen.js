@@ -1,9 +1,13 @@
 import { View, Text, StyleSheet, Image, Button } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { colors } from "../config/theme";
+import { ThemeContext } from "../context/ThemeContext";
 
 const circle_logo = "../assets/circle-icon.png";
 
 const LoginScreen = ({ navigation }) => {
+  const theme = useContext(ThemeContext);
+  let activeColors = colors[theme.mode];
   return (
     <View style={styles.Container}>
       <View style={styles.LogoContainer}>
