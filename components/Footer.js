@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { Button, View } from "react-native";
 import Circle from "../screens/Circle";
 import SettingsScreen from "../screens/Settings";
@@ -17,43 +17,55 @@ export default function Footer() {
   //TODO: Add Shop Screen
   //TODO: Add Rewards Screen
   //TODO: Add Dark/Light mode Switch
-  const theme = { mode: "dark" };
+  const { theme, updateTheme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarStyle: {
-          backgroundColor: activeColors.primary,
+          backgroundColor: activeColors.secondary,
         },
-        headerShown: false,
+        headerShown: true,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          let iconColor;
           if (route.name === "Circle") {
-            iconColor = focused ? "blue" : "gray";
-            return (
-              <FontAwesome5 name="circle-notch" size={24} color={iconColor} />
-            );
+            return <FontAwesome5 name="circle-notch" size={24} color={color} />;
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
-            iconColor = focused ? "blue" : "gray";
-            return <Ionicons name={iconName} size={24} color={iconColor} />;
+            return <Ionicons name={iconName} size={24} color={color} />;
           } else if (route.name === "News") {
             iconName = focused ? "newspaper" : "newspaper-outline";
-            iconColor = focused ? "blue" : "gray";
-            return <Ionicons name={iconName} size={24} color={iconColor} />;
+            return <Ionicons name={iconName} size={24} color={color} />;
           }
 
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={24} color={iconColor} />;
+          return <Ionicons name={iconName} size={24} color={color} />;
         },
-        tabBarActiveTintColor: "blue",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: activeColors.accent,
+        tabBarInactiveTintColor: activeColors.tertiary,
+        tabBarStyle: {
+          backgroundColor: activeColors.secondary,
+        },
+        headerTitleAlign: "left",
+        headerTitleStyle: {
+          paddingLeft: 10,
+          fontSize: 24,
+        },
+        headerStyle: {
+          backgroundColor: activeColors.secondary,
+        },
+        headerTintColor: activeColors.tint,
       })}
     >
       {/* <Tab.Screen name="Logout" component={Logout} /> */}
       <Tab.Screen name="News" component={News} />
-      <Tab.Screen name="Circle" component={Circle} />
+      <Tab.Screen
+        options={{
+          headerShown: false, // change this to `false`
+        }}
+        name="Circle"
+        component={Circle}
+      />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );

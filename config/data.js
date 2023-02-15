@@ -1,0 +1,38 @@
+export const newsData = [
+  {
+    id: 1,
+    title: "first",
+    image: require("../assets/images/plant.jpg"),
+    date: "2 days ago",
+    author: "Obama",
+    avatar: require("../assets/images/plant.jpg"),
+    content: "Lorem ipsum",
+  },
+  {
+    id: 2,
+    title: "second",
+    image: require("../assets/images/camera.jpg"),
+    date: "2 days ago",
+    author: "Obama",
+    avatar: require("../assets/images/camera.jpg"),
+    content: "Lorem ipsum",
+  },
+  {
+    id: 3,
+    title: "third",
+    image: require("../assets/images/panda.jpg"),
+    date: "2 days ago",
+    author: "Obama",
+    avatar: require("../assets/images/panda.jpg"),
+    content: "Lorem ipsum",
+  },
+  {
+    id: 4,
+    title: "fourth",
+    image: require("../assets/images/car.jpg"),
+    date: "2 days ago",
+    author: "Obama",
+    avatar: require("../assets/images/car.jpg"),
+    content: "Lorem ipsum",
+  },
+];
