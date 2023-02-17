@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, ImageBackground } from "react-native";
 import React, { useContext } from "react";
 import GroupChat from "../../screens/circle/GroupChat";
 import GroupMeet from "../../screens/circle/GroupMeet";
@@ -8,9 +8,11 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons, Entypo } from "@expo/vector-icons";
 import { colors } from "../../config/theme";
 import { ThemeContext } from "../../context/ThemeContext";
+import { Image } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +40,40 @@ const Hamburger = () => {
       drawerContent={(props) => {
         return (
           <DrawerContentScrollView {...props}>
+            <ImageBackground
+              source={require("../../assets/images/menu-bg.jpg")}
+              style={{ padding: 20 }}
+            >
+              <Image
+                source={require("../../assets/images/user-profile.png")}
+                style={{
+                  height: 80,
+                  width: 80,
+                  borderRadius: 40,
+                  marginBottom: 10,
+                }}
+              />
+              <Text
+                style={{
+                  color: "#fff",
+                  fontSize: 18,
+                  marginBottom: 5,
+                }}
+              >
+                John Doe
+              </Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text
+                  style={{
+                    color: "#fff",
+                    marginRight: 5,
+                  }}
+                >
+                  280 Coins
+                </Text>
+                <FontAwesome5 name="coins" size={14} color="#fff" />
+              </View>
+            </ImageBackground>
             <DrawerItemList {...props} />
             <DrawerItem
               icon={() => (

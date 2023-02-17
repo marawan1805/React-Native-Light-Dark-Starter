@@ -1,50 +1,170 @@
-import { View, Text, StyleSheet, Image, Button } from "react-native";
 import React, { useContext } from "react";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
-const circle_logo = "../assets/circle-icon.png";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+
+import CustomButton from "../components/CustomButton";
+import InputField from "../components/InputField";
 
 const LoginScreen = ({ navigation }) => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   return (
-    <View style={styles.Container}>
-      <View style={styles.LogoContainer}>
-        <Image source={{ uri: circle_logo }} />
-        <Button
-          style={styles.Button}
-          title="Login"
-          onPress={() => navigation.navigate("Home")}
+    <SafeAreaView
+      style={{
+        backgroundColor: activeColors.primary,
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
+      <View style={{ paddingHorizontal: 25 }}>
+        <View style={{ alignItems: "center" }}>
+          <Image
+            source={require("../assets/images/misc/login.png")}
+            style={{
+              height: 200,
+              width: 300,
+              transform: [{ rotate: "-5deg" }],
+            }}
+          />
+        </View>
+
+        <Text
+          style={{
+            fontSize: 28,
+            fontWeight: "500",
+            color: activeColors.tint,
+            marginBottom: 30,
+          }}
+        >
+          Login
+        </Text>
+
+        <InputField
+          selectionColor={activeColors.tint}
+          label={"Email ID"}
+          icon={
+            <MaterialIcons
+              name="alternate-email"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+          keyboardType="email-address"
         />
+
+        <InputField
+          label={"Password"}
+          icon={
+            <Ionicons
+              name="ios-lock-closed-outline"
+              size={20}
+              color="#666"
+              style={{ marginRight: 5 }}
+            />
+          }
+          inputType="password"
+          fieldButtonLabel={"Forgot?"}
+          fieldButtonFunction={() => {}}
+        />
+
+        <CustomButton
+          label={"Login"}
+          onPress={() => {
+            navigation.navigate("Home");
+          }}
+        />
+
+        <Text
+          style={{
+            textAlign: "center",
+            color: activeColors.tint,
+            marginBottom: 30,
+          }}
+        >
+          Or, login with ...
+        </Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 30,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              backgroundColor: activeColors.img,
+              borderRadius: 10,
+              paddingHorizontal: 30,
+              paddingVertical: 10,
+            }}
+          >
+            <Image
+              source={require("../assets/images/misc/google.png")}
+              style={{ height: 24, width: 24 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              backgroundColor: activeColors.img,
+              borderRadius: 10,
+              paddingHorizontal: 30,
+              paddingVertical: 10,
+            }}
+          >
+            <Image
+              source={require("../assets/images/misc/facebook.png")}
+              style={{ height: 24, width: 24 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {}}
+            style={{
+              backgroundColor: activeColors.img,
+              borderRadius: 10,
+              paddingHorizontal: 30,
+              paddingVertical: 10,
+            }}
+          >
+            <Image
+              source={require("../assets/images/misc/apple.png")}
+              style={{ height: 24, width: 24 }}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            marginBottom: 30,
+          }}
+        >
+          <Text style={{ color: activeColors.tint }}>New to the app? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <Text style={{ color: "#AD40AF", fontWeight: "700" }}>
+              {" "}
+              Register
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  Container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  LogoContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Button: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 2,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-});
 
 export default LoginScreen;

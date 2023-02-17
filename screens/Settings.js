@@ -23,6 +23,9 @@ const SettingsScreen = () => {
     updateTheme();
     setIsDarkTheme((prev) => !prev);
   };
+  Appearance.addChangeListener(({ colorScheme }) => {
+    colorScheme === "dark" ? setIsDarkTheme(true) : setIsDarkTheme(false);
+  });
 
   return (
     <ScrollView

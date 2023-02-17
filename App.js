@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import { ThemeContext } from "./context/ThemeContext";
 import { storeData, getData } from "./config/asyncStorage";
 import * as SplashScreen from "expo-splash-screen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createStackNavigator();
@@ -50,7 +51,16 @@ const App = () => {
     <ThemeContext.Provider value={{ theme, updateTheme }}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Login"
+            component={LoginScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Register"
+            component={RegisterScreen}
+          />
           <Stack.Screen
             name="Home"
             component={Footer}
