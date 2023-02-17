@@ -6,6 +6,7 @@ import {
   Switch,
   Button,
   ScrollView,
+  Appearance,
 } from "react-native";
 import React, { useContext, useState } from "react";
 import { colors } from "../config/theme";
@@ -35,7 +36,7 @@ const SettingsScreen = () => {
 
       <View style={styles.section}>
         <SettingsItem label="Name">
-          <StyledText>Richard Barnes</StyledText>
+          <StyledText>Maro</StyledText>
         </SettingsItem>
         <SettingsItem label="Joined On">
           <StyledText>02/12/2022</StyledText>

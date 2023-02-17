@@ -7,11 +7,11 @@ export const colors = {
     tint: "#111827",
   },
   dark: {
-    //invert colors
-    primary: "#1f2937",
-    secondary: "#111827",
-    tertiary: "#d1d5db",
-    accent: "#0891b2",
+    //262626 212121
+    primary: "#121212",
+    secondary: "#181818",
+    tertiary: "#f9fafb",
+    accent: "#03dac5",
     tint: "#f9fafb",
   },
   primary: "#f3f4f6",
