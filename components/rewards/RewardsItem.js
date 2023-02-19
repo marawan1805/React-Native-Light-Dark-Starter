@@ -7,10 +7,11 @@ import {
   Text,
 } from "react-native";
 import { Alert, Modal, Pressable } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { colors } from "../../config/theme";
 import StyledText from "../Texts/StyledText";
+import Lottie from "lottie-react-native";
 
 const RewardsItem = (props) => {
   const handlePress = () => {
@@ -20,6 +21,7 @@ const RewardsItem = (props) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   const [modalVisible, setModalVisible] = useState(false);
+  const LottieRef = useRef(false);
 
   //test status for locking button
   const [status, setStatus] = useState(false);
@@ -103,12 +105,29 @@ const RewardsItem = (props) => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
+              <Image source={props.image} style={styles.image} />
+              <Text style={styles.modalText}>Reward Claimed!</Text>
+              <Lottie
+                source={require("../../assets/animations/success.json")}
+                ref={LottieRef}
+                autoPlay={true}
+                loop={false}
+                style={{
+                  width: 1000,
+                  height: 1300,
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  marginTop: -110,
+                }}
+                resizeMode="cover"
+                onAnimationFinish={() => LottieRef?.current?.reset()}
+              />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
               >
-                <Text style={styles.textStyle}>Hide Modal</Text>
+                <Text style={styles.textStyle}>Yay!</Text>
               </Pressable>
             </View>
           </View>
@@ -161,12 +180,14 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalView: {
-    margin: 20,
+    width: 300,
+    height: 300,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 15,
     alignItems: "center",
-    shadowColor: "#000",
+    justifyContent: "space-evenly",
+    margin: 20,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -185,6 +206,7 @@ const styles = StyleSheet.create({
   },
   buttonClose: {
     backgroundColor: "#2196F3",
+    width: 100,
   },
   textStyle: {
     color: "white",
@@ -192,7 +214,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalText: {
-    marginBottom: 15,
     textAlign: "center",
   },
 });
