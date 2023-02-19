@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { Button, View } from "react-native";
 import Circle from "../screens/Circle";
 import SettingsScreen from "../screens/Settings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, Entypo } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { colors } from "../config/theme";
-import News from "../screens/News";
 import { ThemeContext } from "../context/ThemeContext";
+import Rewards from "../screens/Rewards";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,8 +32,8 @@ export default function Footer() {
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
-          } else if (route.name === "News") {
-            iconName = focused ? "newspaper" : "newspaper-outline";
+          } else if (route.name === "Rewards") {
+            iconName = focused ? "trophy" : "trophy-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
           }
 
@@ -58,7 +57,7 @@ export default function Footer() {
       })}
     >
       {/* <Tab.Screen name="Logout" component={Logout} /> */}
-      <Tab.Screen name="News" component={News} />
+      <Tab.Screen name="Rewards" component={Rewards} />
       <Tab.Screen
         options={{
           headerShown: false, // change this to `false`

@@ -1,26 +1,34 @@
 import { FlatList } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { colors } from "../../config/theme";
-import NewsItem from "./NewsItem";
+import RewardsItem from "./RewardsItem";
 
-const NewsContainer = ({ data }) => {
+const RewardsContainer = (props) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+
   return (
     <FlatList
+      style={{
+        backgroundColor: activeColors.accent,
+        marginLeft: 20,
+        marginRight: 20,
+        borderRadius: 25,
+      }}
       showsVerticalScrollIndicator={false}
-      data={data}
-      renderItem={({ item }) => <NewsItem {...item} />}
+      data={props.data}
+      renderItem={({ item }) => <RewardsItem myRef={props.myRef} {...item} />}
       // keyExtractor={({ id }) => id.toString()}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{
         paddingLeft: 25,
         paddingTop: 25,
+        paddingBottom: 25,
       }}
     />
   );
 };
 
-export default NewsContainer;
+export default RewardsContainer;
