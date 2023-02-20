@@ -7,6 +7,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
 import Rewards from "../screens/Rewards";
+import MainDrawer from "./drawer/MainDrawer";
 
 const Tab = createBottomTabNavigator();
 
@@ -60,7 +61,7 @@ export default function Footer() {
       <Tab.Screen name="Rewards" component={Rewards} />
       <Tab.Screen
         options={{
-          headerShown: false, // change this to `false`
+          headerShown: false,
         }}
         name="Circle"
         component={Circle}

@@ -12,7 +12,7 @@ const StyledText = ({ children, small, big, style, bold, ...props }) => {
     <Text
       style={[
         {
-          color: activeColors.tint,
+          color: activeColors.accent,
           fontSize: small ? 12 : big ? 24 : 16,
           fontWeight: bold || big ? "bold" : "normal",
         },

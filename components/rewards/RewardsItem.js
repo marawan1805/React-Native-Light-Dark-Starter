@@ -15,7 +15,7 @@ import Lottie from "lottie-react-native";
 
 const RewardsItem = (props) => {
   const handlePress = () => {
-    props.myRef.current?.play();
+    // props.myRef.current?.play();
     setModalVisible(true);
   };
   const { theme } = useContext(ThemeContext);
@@ -24,7 +24,8 @@ const RewardsItem = (props) => {
   const LottieRef = useRef(false);
 
   //test status for locking button
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(true);
+  const [claimed, setClaimed] = useState(false);
 
   return (
     <View
@@ -75,7 +76,6 @@ const RewardsItem = (props) => {
             padding: 8,
             width: 85,
             borderRadius: 10,
-
             justifyContent: "center",
             alignSelf: "center",
           }}
@@ -105,8 +105,13 @@ const RewardsItem = (props) => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
+              <StyledText big bold>
+                {props.title}
+              </StyledText>
               <Image source={props.image} style={styles.image} />
-              <Text style={styles.modalText}>Reward Claimed!</Text>
+              <StyledText bold style={styles.modalText}>
+                Reward Claimed!
+              </StyledText>
               <Lottie
                 source={require("../../assets/animations/success.json")}
                 ref={LottieRef}
@@ -125,7 +130,10 @@ const RewardsItem = (props) => {
               />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  setClaimed(true);
+                }}
               >
                 <Text style={styles.textStyle}>Yay!</Text>
               </Pressable>
@@ -147,19 +155,38 @@ const RewardsItem = (props) => {
           />
         </View>
       )}
+      {claimed && (
+        <View style={styles.overlay}>
+          <Lottie
+            source={require("../../assets/animations/check.json")}
+            style={{
+              width: 250,
+              height: 250,
+              marginTop: -25,
+              justifyContent: "center",
+              alignSelf: "center",
+              alignItems: "center",
+            }}
+            autoPlay={true}
+            loop={false}
+          />
+        </View>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   Container: {
-    height: 150,
-    width: 150,
+    height: 170,
+    width: 170,
     marginRight: 20,
+    padding: 10,
     justifyContent: "center",
     alignItems: "center",
     borderColor: "#AD40AF",
-    borderWidth: 4,
+    borderWidth: 6,
+    borderRadius: 10,
   },
   image: {
     width: 70,
