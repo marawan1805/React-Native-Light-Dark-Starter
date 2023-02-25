@@ -12,7 +12,7 @@ const RewardsContainer = (props) => {
   return (
     <FlatList
       style={{
-        backgroundColor: activeColors.accent,
+        backgroundColor: "#F7E0AE",
         marginLeft: 20,
         marginRight: 20,
         borderRadius: 25,
