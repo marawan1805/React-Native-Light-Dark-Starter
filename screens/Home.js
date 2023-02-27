@@ -1,11 +1,12 @@
-import { StyleSheet, ScrollView } from "react-native";
 import React, { useContext } from "react";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
+import { ScrollView } from "react-native";
+import { StyleSheet } from "react-native";
 import StyledText from "../components/texts/StyledText";
 
-const Shop = () => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+const Home = () => {
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
   return (
@@ -18,7 +19,7 @@ const Shop = () => {
       ]}
     >
       <StyledText style={styles.sectionTitle} big>
-        Buy
+        Home
       </StyledText>
     </ScrollView>
   );
@@ -35,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Shop;
+export default Home;

@@ -1,12 +1,17 @@
 import { Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { colors } from "../config/theme";
 
 export default function CustomButton({ label, onPress }) {
+  const { theme } = useContext(ThemeContext);
+  let activeColors = colors[theme.mode];
+
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{
-        backgroundColor: "#AD40AF",
+        backgroundColor: activeColors.accent,
         padding: 20,
         borderRadius: 10,
         marginBottom: 30,

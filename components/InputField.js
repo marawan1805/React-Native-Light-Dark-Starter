@@ -13,6 +13,7 @@ export default function InputField({
 }) {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+
   return (
     <View
       style={{
@@ -28,6 +29,7 @@ export default function InputField({
         <TextInput
           placeholderTextColor={activeColors.text}
           placeholder={label}
+          keyboardAppearance={activeColors.primary}
           keyboardType={keyboardType}
           style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
           secureTextEntry={true}
@@ -36,12 +38,13 @@ export default function InputField({
         <TextInput
           placeholderTextColor={activeColors.text}
           placeholder={label}
+          keyboardAppearance={activeColors.primary}
           keyboardType={keyboardType}
           style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
         />
       )}
       <TouchableOpacity onPress={fieldButtonFunction}>
-        <Text style={{ color: "#AD40AF", fontWeight: "700" }}>
+        <Text style={{ color: activeColors.accent, fontWeight: "700" }}>
           {fieldButtonLabel}
         </Text>
       </TouchableOpacity>

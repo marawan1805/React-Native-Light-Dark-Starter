@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   Image,
 } from "react-native";
@@ -19,6 +18,7 @@ import InputField from "../components/InputField";
 const LoginScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+
   return (
     <SafeAreaView
       style={{
@@ -82,7 +82,7 @@ const LoginScreen = ({ navigation }) => {
         <CustomButton
           label={"Login"}
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("Footer");
           }}
         />
 
@@ -156,7 +156,7 @@ const LoginScreen = ({ navigation }) => {
         >
           <Text style={{ color: activeColors.tint }}>New to the app? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text style={{ color: "#AD40AF", fontWeight: "700" }}>
+            <Text style={{ color: activeColors.accent, fontWeight: "700" }}>
               {" "}
               Register
             </Text>

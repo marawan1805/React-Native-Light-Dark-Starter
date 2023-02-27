@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { colors } from "../../config/theme";
-import StyledText from "../Texts/StyledText";
+import StyledText from "../texts/StyledText";
 
 //receives font size and weight as input
 

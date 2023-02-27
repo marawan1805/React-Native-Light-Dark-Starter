@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { View, Text } from "react-native";
-import React from "react";
+//those two functions are used to store and retrieve data from the async storage
 
 export const storeData = async (key, value) => {
   try {

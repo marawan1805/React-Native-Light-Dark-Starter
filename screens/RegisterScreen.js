@@ -4,10 +4,8 @@ import {
   ScrollView,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   Image,
-  Button,
 } from "react-native";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
@@ -223,7 +221,10 @@ const RegisterScreen = ({ navigation }) => {
         >
           <Text style={{ color: activeColors.tint }}>Already registered? </Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{ color: "#AD40AF", fontWeight: "700" }}> Login</Text>
+            <Text style={{ color: activeColors.accent, fontWeight: "700" }}>
+              {" "}
+              Login
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

@@ -1,24 +1,18 @@
 import React, { useContext } from "react";
-import Circle from "../screens/Circle";
 import SettingsScreen from "../screens/Settings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
-import Rewards from "../screens/Shop";
 import Shop from "../screens/Shop";
+import Home from "../screens/Home";
 
 const Tab = createBottomTabNavigator();
 
 export default function Footer() {
-  //TODO: Add Settings Screen
-  //TODO: Add Profile Screen
-  //TODO: Add Shop Screen
-  //TODO: Add Rewards Screen
-  //TODO: Add Dark/Light mode Switch
   const { theme, updateTheme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -28,8 +22,9 @@ export default function Footer() {
         headerShown: true,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Circle") {
-            return <FontAwesome5 name="circle-notch" size={24} color={color} />;
+          if (route.name === "Home") {
+            iconName = focused ? "home" : "home-outline";
+            return <Ionicons name={iconName} size={24} color={color} />;
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
@@ -57,15 +52,8 @@ export default function Footer() {
         headerTintColor: activeColors.tint,
       })}
     >
-      {/* <Tab.Screen name="Logout" component={Logout} /> */}
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Shop" component={Shop} />
-      <Tab.Screen
-        options={{
-          headerShown: false,
-        }}
-        name="Circle"
-        component={Circle}
-      />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
