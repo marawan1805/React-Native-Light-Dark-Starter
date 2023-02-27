@@ -13,6 +13,8 @@
 | - |-  |
 |    <img height="600px" src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <img height="600px" src="https://i.ibb.co/9vv0809/image.png" alt="image" border="0" />  |
 
+</br>
+
 ## Features
 
 - Light/dark mode toggle
@@ -22,12 +24,14 @@
 - Bottom Tab Navigator
 - Cross platform
 
+</br>
 
 ## Demo
 
 https://clipchamp.com/watch/jykPf8Umcj4
 
 
+</br>
 
 
 ## Setting Up
@@ -40,6 +44,7 @@ To use this project, you can download it as a zip or clone this repo, then run
 ```
 If you have an emulator you can run the app on it, or you can download the Expo Go app on your phone, make sure you're connected to the same network as your computer, and scan the code from the camera app. It might take a while to load initially.
 
+</br>
 
 ## Documentation
 
@@ -54,12 +59,16 @@ We also make use of React <a href="https://reactnative.dev/docs/asyncstorage">As
 
 Finally, we make use of the addChangeListener() method provided by the Appearance module in order to update the theme of the app whenever the system's theme is changed.
 
+</br>
 
 ### 2. Colors:
 
 Inside the config folder is a file named Theme.js which exports the function "colors". This is the color palette for the app. You can change the colors however you prefer.
 
 <a href="https://m2.material.io/design/color/the-color-system.html#color-theme-creation">Here </a> is a nice guide explaining how to create a nice color palette for your app
+
+</br>
+
 
 ### 3. How to use Light/Dark Mode in your components:
 
@@ -116,6 +125,7 @@ Likely, you can call the different colors you set in Theme.js. For example:
 
 and so on.
 
+</br>
 
 ## Contributing
 
