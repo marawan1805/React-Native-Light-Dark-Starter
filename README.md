@@ -1,6 +1,6 @@
 
 <p align="center">
-<a href="https://ibb.co/2ZYMmwT"><img height="300px" src="https://i.ibb.co/g4FWHGx/image00001.jpg" alt="image00001" border="0"></a>
+<a href="https://ibb.co/2ZYMmwT"><img src="https://i.ibb.co/g4FWHGx/image00001.jpg" alt="image00001" border="0"></a>
 </p>
 
 ### React Native Expo simple starter with full light dark theme control using async storage and context api.
@@ -11,7 +11,7 @@
 
 |    Dark | Light |
 | - |-  |
-|    <img height="600px" src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img height="600px" src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
+|    <img  src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img  src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
 
 </br>
 
