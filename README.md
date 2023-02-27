@@ -11,7 +11,7 @@
 
 |    Dark | Light |
 | - |-  |
-|    <img height="600px" src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <img height="600px" src="https://i.ibb.co/9vv0809/image.png" alt="image" border="0" />  |
+|    <img height="600px" src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img height="600px" src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
 
 </br>
 
