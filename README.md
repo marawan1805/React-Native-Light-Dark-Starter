@@ -84,7 +84,7 @@ Then we add the following two lines inside the main function of our component:
     const { theme } = useContext(ThemeContext);
     let activeColors = colors[theme.mode];
 
-Then we style our component using "activeColors". For example, let's say you want to set the background color of my screen to the dark/light (according to what the user chooses). First, in Theme.js, you can set the different colors for each mode, for example:
+Then we style our component using "activeColors". For example, let's say you want to set the background color of a screen to the dark/light (according to what the user chooses). First, in Theme.js, you can set the different colors for each mode, for example:
     
     ...
     light: {
