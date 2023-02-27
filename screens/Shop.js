@@ -9,7 +9,7 @@ import ExploreSection from "../components/explore/ExploreSection";
 import Lottie from "lottie-react-native";
 import RewardsContainer from "../components/rewards/RewardsContainer";
 
-const Rewards = () => {
+const Shop = () => {
   const { theme, updateTheme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
@@ -37,7 +37,7 @@ const Rewards = () => {
       </StyledText>
       <RewardsContainer myRef={LottieRef} data={rewardsData} />
       <StyledText style={styles.sectionTitle} big>
-        Explore
+        Buy
       </StyledText>
       <ExploreSection data={rewardsData} />
     </ScrollView>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Rewards;
+export default Shop;

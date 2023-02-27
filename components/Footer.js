@@ -6,7 +6,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
-import Rewards from "../screens/Rewards";
+import Rewards from "../screens/Shop";
+import Shop from "../screens/Shop";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,8 +33,8 @@ export default function Footer() {
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
-          } else if (route.name === "Rewards") {
-            iconName = focused ? "trophy" : "trophy-outline";
+          } else if (route.name === "Shop") {
+            iconName = focused ? "cart" : "cart-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
           }
 
@@ -57,7 +58,7 @@ export default function Footer() {
       })}
     >
       {/* <Tab.Screen name="Logout" component={Logout} /> */}
-      <Tab.Screen name="Rewards" component={Rewards} />
+      <Tab.Screen name="Shop" component={Shop} />
       <Tab.Screen
         options={{
           headerShown: false,
