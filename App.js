@@ -46,15 +46,6 @@ const App = () => {
     storeData("homeTheme", newTheme);
   };
 
-  //if the theme of the device changes then
-  //updateTheme function will be called using
-  //Appearance.addChangeListener
-
-  Appearance.addChangeListener(({ colorScheme }) => {
-    updateTheme();
-    setTheme({ mode: colorScheme });
-  });
-
   //fetchStoredTheme function will fetch the theme
   //from async storage and update the theme of the app
   //async storage is used to store the last theme that the user chose
@@ -77,6 +68,14 @@ const App = () => {
   //fetchStoredTheme function will be called when the app starts
   useEffect(() => {
     fetchStoredTheme();
+    //if the theme of the device changes then
+    //updateTheme function will be called using
+    //Appearance.addChangeListener
+
+    Appearance.addChangeListener(({ colorScheme }) => {
+      updateTheme();
+      setTheme({ mode: colorScheme });
+    });
   }, []);
 
   return (

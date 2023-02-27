@@ -6,7 +6,7 @@ import {
   ScrollView,
   Appearance,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
 import StyledText from "../components/texts/StyledText";
@@ -27,12 +27,14 @@ const SettingsScreen = ({ navigation }) => {
     setIsDarkTheme((prev) => !prev);
   };
 
-  //here we listen for the color scheme change and update the state of the switch
-  //this is necessary so that the switch automatically updates
-  //when the user changes the theme from the settings
-  Appearance.addChangeListener(({ colorScheme }) => {
-    colorScheme === "dark" ? setIsDarkTheme(true) : setIsDarkTheme(false);
-  });
+  useEffect(() => {
+    //here we listen for the color scheme change and update the state of the switch
+    //this is necessary so that the switch automatically updates
+    //when the user changes the theme from the settings
+    Appearance.addChangeListener(({ colorScheme }) => {
+      colorScheme === "dark" ? setIsDarkTheme(true) : setIsDarkTheme(false);
+    });
+  }, []);
 
   return (
     <ScrollView
