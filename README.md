@@ -5,6 +5,8 @@
 
 ### React Native Expo simple starter with full light dark theme control using async storage and context api.
 
+Note: To run android using React Native CLI, go to local.properties in the andriod folder and change USERNAME to your username depending on your os.
+
 </br>
 
 ## Screenshots
