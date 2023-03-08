@@ -28,7 +28,7 @@
 
 ## Demo 💥
 
-![](https://github.com/marawan1805/React-Native-Light-Dark-Starter/assets/Demo.gif)
+![til](https://github.com/marawan1805/React-Native-Light-Dark-Starter/assets/Demo.gif)
 
 </br>
 
