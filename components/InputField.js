@@ -29,6 +29,7 @@ export default function InputField({
         <TextInput
           placeholderTextColor={activeColors.text}
           placeholder={label}
+          keyboardAppearance={activeColors.primary}
           keyboardType={keyboardType}
           style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
           secureTextEntry={true}
@@ -37,6 +38,7 @@ export default function InputField({
         <TextInput
           placeholderTextColor={activeColors.text}
           placeholder={label}
+          keyboardAppearance={activeColors.primary}
           keyboardType={keyboardType}
           style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
         />
