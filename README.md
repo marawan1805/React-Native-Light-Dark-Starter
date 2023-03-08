@@ -11,7 +11,7 @@
 
 |    Dark | Light |
 | - |-  |
-|    <img  src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img  src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
+|    <img width=300 src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img width=300 src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
 
 </br>
 
@@ -28,7 +28,7 @@
 
 ## Demo 💥
 
-![til](https://github.com/marawan1805/React-Native-Light-Dark-Starter/assets/Demo.gif)
+![til](https://github.com/marawan1805/React-Native-Light-Dark-Starter/blob/main/assets/Demo.gif)
 
 </br>
 
