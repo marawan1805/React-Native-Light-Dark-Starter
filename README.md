@@ -3,9 +3,7 @@
 <a href="https://ibb.co/2ZYMmwT"><img src="https://i.ibb.co/g4FWHGx/image00001.jpg" alt="image00001" border="0"></a>
 </p>
 
-### React Native Expo simple starter with full light dark theme control using async storage and context api.
-
-Note: To run android using React Native CLI, go to local.properties in the Android folder and change USERNAME to your username depending on your os.
+### React Native Expo simple starter with full light/dark theme control using async storage and context api.
 
 </br>
 
@@ -30,8 +28,7 @@ Note: To run android using React Native CLI, go to local.properties in the Andro
 
 ## Demo 💥
 
-https://clipchamp.com/watch/jykPf8Umcj4
-
+![](https://github.com/marawan1805/React-Native-Light-Dark-Starter/assets/Demo.gif)
 
 </br>
 
@@ -46,13 +43,12 @@ To run this project using Expo, you can download it as a zip or clone this repo,
 ```
 If you have an emulator you can run the app on it, or you can download the Expo Go app on your phone, make sure you're connected to the same network as your computer, and scan the code from the camera app. It might take a while to load initially.
 
-To run android using React Native CLI, go to local.properties in the andriod folder and change USERNAME to your username depending on your os. This should take some time depending on your network speed, as it downloads a couple of GBs. Then run:
+Whenever you want to release android/ios builds, run:
+
 ```bash
-  npm i
-  react-native run-android
+  npx expo prebuild
 ```
 
-You can also run ios using Xcode, or using Expo.
 
 </br>
 
