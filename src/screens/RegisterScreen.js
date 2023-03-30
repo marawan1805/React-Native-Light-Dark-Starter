@@ -40,7 +40,7 @@ const RegisterScreen = ({ navigation }) => {
       >
         <View style={{ alignItems: "center" }}>
           <Image
-            source={require("../assets/images/misc/login.png")}
+            source={require("../images/login.png")}
             style={{
               height: 200,
               width: 200,
@@ -70,42 +70,42 @@ const RegisterScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.img,
+              backgroundColor: activeColors.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
             }}
           >
             <Image
-              source={require("../assets/images/misc/google.png")}
+              source={require("../images/google.png")}
               style={{ height: 24, width: 24 }}
             />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.img,
+              backgroundColor: activeColors.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
             }}
           >
             <Image
-              source={require("../assets/images/misc/facebook.png")}
+              source={require("../images/facebook.png")}
               style={{ height: 24, width: 24 }}
             />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.img,
+              backgroundColor: activeColors.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
             }}
           >
             <Image
-              source={require("../assets/images/misc/apple.png")}
+              source={require("../images/apple.png")}
               style={{ height: 24, width: 24 }}
             />
           </TouchableOpacity>

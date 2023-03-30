@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
-import Shop from "../screens/Shop";
-import Home from "../screens/Home";
+import CartScreen from "../screens/CartScreen";
+import HomeScreen from "../screens/HomeScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +28,7 @@ export default function Footer() {
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
-          } else if (route.name === "Shop") {
+          } else if (route.name === "Cart") {
             iconName = focused ? "cart" : "cart-outline";
             return <Ionicons name={iconName} size={24} color={color} />;
           }
@@ -52,8 +52,8 @@ export default function Footer() {
         headerTintColor: activeColors.tint,
       })}
     >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Shop" component={Shop} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
