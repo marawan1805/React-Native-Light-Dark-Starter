@@ -11,7 +11,7 @@
 
 |    <img width=300 src="https://i.ibb.co/S0YTR17/IMG-7501.png" alt="image" border="0"/><br /> | <img width=300 src="https://i.ibb.co/3kpm6RH/IMG-7500.png" alt="image" border="0"/><br /> |
 | - |-  |
-|    <img width=300 src="https://i.ibb.co/9ZZKmfs/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img width=300 src="https://i.ibb.co/JtfGVgH/image.png" alt="image" border="0"></a> |
+|    <img width=300 src="https://i.ibb.co/2sX1Q9C/image.png" alt="image" border="0"/><br />  | <a href="https://ibb.co/C8kYgDQ"><img width=300 src="https://i.ibb.co/b26B7PX/image.png" alt="image" border="0"></a> |
 
 </br>
 
