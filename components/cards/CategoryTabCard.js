@@ -1,28 +1,38 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { colors } from "../../config/theme";
 import { ThemeContext } from "../../context/ThemeContext";
 
-const CategoryCard = ({ title, onPress, isActive }) => {
+const CategoryCard = ({ title, onPress, isActive, index }) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Image
+        style={styles.image}
+        source={require("../../images/sample_image_1.jpg")}
+      />
       <View
         style={[
           styles.container,
           {
             backgroundColor: isActive
-              ? activeColors.category
-              : activeColors.secondary,
+              ? colors.light.red
+              : colors.light.secondary,
           },
         ]}
       >
         <Text
           style={[
             styles.text,
-            { color: isActive ? activeColors.primary : activeColors.text },
+            { color: isActive ? colors.light.primary : colors.light.text },
           ]}
         >
           {title}
@@ -45,6 +55,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginHorizontal: 10,
     marginVertical: 5,
+    justifyContent: "center",
   },
   activeContainer: {
     backgroundColor: "#FFA500",
@@ -59,6 +70,13 @@ const styles = StyleSheet.create({
   },
   activeTitle: {
     color: "#FFFFFF",
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    marginBottom: -20,
+    marginTop: 15,
   },
 });
 

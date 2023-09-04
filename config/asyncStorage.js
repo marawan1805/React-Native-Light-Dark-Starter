@@ -1,7 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-//those two functions are used to store and retrieve data from the async storage
-
 export const storeData = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value);

@@ -41,24 +41,11 @@ const SettingsScreen = ({ navigation }) => {
       contentContainerStyle={{
         flexGrow: 1,
       }}
-      style={[{ backgroundColor: activeColors.primary }, styles.Container]}
+      style={[{ backgroundColor: colors.light.primary }, styles.Container]}
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}
     >
-      <StyledText style={{ color: activeColors.accent }} bold>
-        User
-      </StyledText>
-
-      <View style={styles.section}>
-        <SettingsItem label="Name">
-          <StyledText>Maro</StyledText>
-        </SettingsItem>
-        <SettingsItem label="Joined On">
-          <StyledText>02/12/2022</StyledText>
-        </SettingsItem>
-      </View>
-
-      <StyledText style={{ color: activeColors.accent }} bold>
+      <StyledText style={{ color: colors.light.accent }} bold>
         Theme Switch
       </StyledText>
 
@@ -67,11 +54,11 @@ const SettingsScreen = ({ navigation }) => {
           <Switch
             value={isDarkTheme}
             onValueChange={toggleTheme}
-            thumbColor={isDarkTheme ? "#fff" : activeColors.tertiary}
-            ios_backgroundColor={activeColors.primary}
+            thumbColor={isDarkTheme ? "#fff" : colors.light.tertiary}
+            ios_backgroundColor={colors.light.primary}
             trackColor={{
-              false: activeColors.primary,
-              true: activeColors.accent,
+              false: colors.light.primary,
+              true: colors.light.accent,
             }}
           ></Switch>
         </SettingsItem>

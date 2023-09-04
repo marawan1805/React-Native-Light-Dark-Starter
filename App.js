@@ -1,50 +1,39 @@
-import { Appearance } from "react-native";
+import { Appearance, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useState, useEffect } from "react";
-import Footer from "./components/Footer";
+import React, { useState, useContext, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginScreen from "./screens/LoginScreen";
 import { storeData, getData } from "./config/asyncStorage";
 import * as SplashScreen from "expo-splash-screen";
+
+import Navigation from "./components/Navigation";
+import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 
-//Theme context is used to update the
-//theme of the app. It will be used in
-//all the screens of the app.
 import { ThemeContext } from "./context/ThemeContext";
+import { auth } from "./config/firebase";
+import { colors } from "./config/theme";
 
-//creating simple splash screen
 SplashScreen.preventAutoHideAsync();
 
-//creating stack navigator which will contain
-//login, register and footer screens
-//footer is the bottom tab navigator which
-//includes all the other screens.
 const Stack = createStackNavigator();
 
 const App = () => {
-  //Appearance.getColorScheme() will return
-  //the current theme of the device and save
-  //it in theme state.
+  const [user, setUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState({ mode: Appearance.getColorScheme() });
+  let activeColors = colors[theme.mode];
 
-  //updateTheme function takes newTheme as a parameter
-  //if newTheme is not passed then it will toggle the theme
-  //and store the new theme in async storage
   const updateTheme = (newTheme) => {
     let mode;
     if (!newTheme) {
-      mode = theme.mode === "dark" ? "light" : "dark";
+      mode = theme.mode === "light";
       newTheme = { mode };
     }
     setTheme(newTheme);
     storeData("homeTheme", newTheme);
   };
 
-  //fetchStoredTheme function will fetch the theme
-  //from async storage and update the theme of the app
-  //async storage is used to store the last theme that the user chose
-  //so that the theme will be the same when the user opens the app next time
   const fetchStoredTheme = async () => {
     try {
       const themeData = await getData("homeTheme");
@@ -54,46 +43,69 @@ const App = () => {
     } catch ({ message }) {
       alert(message);
     } finally {
-      //hiding the splash screen after 1 second
-      await setTimeout(() => SplashScreen.hideAsync(), 1000);
+      setTimeout(() => SplashScreen.hideAsync(), 500);
     }
   };
 
-  //fetchStoredTheme function will be called when the app starts
   useEffect(() => {
     fetchStoredTheme();
 
-    //if the theme of the device changes then
-    //updateTheme function will be called using
-    //Appearance.addChangeListener method
     Appearance.addChangeListener(({ colorScheme }) => {
       updateTheme();
       setTheme({ mode: colorScheme });
     });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setIsLoading(false);
+      } else {
+        // console.log("Error");
+        setUser(null);
+        setIsLoading(false);
+      }
+    });
   }, []);
 
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        size="large"
+        color={colors.light.pink}
+        style={{
+          backgroundColor: colors.light.primary,
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      />
+    );
+  }
+
   return (
-    //we will pass the theme and updateTheme function
-    //to the ThemeContext.Provider so that it can be
-    //used in all the screens of the app.
     <ThemeContext.Provider value={{ theme, updateTheme }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="Login"
-            component={LoginScreen}
-          />
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="Register"
-            component={RegisterScreen}
-          />
-          <Stack.Screen
-            name="Footer"
-            component={Footer}
-            options={{ headerShown: false }}
-          />
+        <Stack.Navigator initialRouteName="Navigation">
+          {user ? (
+            <Stack.Screen
+              name="Navigation"
+              component={Navigation}
+              options={{ headerShown: false }}
+            />
+          ) : (
+            <Stack.Group>
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="Register"
+                component={RegisterScreen}
+              />
+              <Stack.Screen
+                options={{ headerShown: false }}
+                name="Login"
+                component={LoginScreen}
+              />
+            </Stack.Group>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeContext.Provider>

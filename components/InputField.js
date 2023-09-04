@@ -10,6 +10,8 @@ export default function InputField({
   keyboardType,
   fieldButtonLabel,
   fieldButtonFunction,
+  onChangeText,
+  value,
 }) {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
@@ -27,24 +29,31 @@ export default function InputField({
       {icon}
       {inputType == "password" ? (
         <TextInput
-          placeholderTextColor={activeColors.text}
+          placeholderTextColor={colors.light.text}
           placeholder={label}
-          keyboardAppearance={activeColors.primary}
+          keyboardAppearance={colors.light.primary}
           keyboardType={keyboardType}
-          style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
+          style={{ flex: 1, paddingVertical: 0, color: colors.light.tint }}
           secureTextEntry={true}
+          onChangeText={onChangeText}
+          value={value}
+          autoCapitalize="none"
+          aria-valuemin={6}
         />
       ) : (
         <TextInput
-          placeholderTextColor={activeColors.text}
+          placeholderTextColor={colors.light.text}
           placeholder={label}
-          keyboardAppearance={activeColors.primary}
+          keyboardAppearance={colors.light.primary}
           keyboardType={keyboardType}
-          style={{ flex: 1, paddingVertical: 0, color: activeColors.tint }}
+          onChangeText={onChangeText}
+          value={value}
+          style={{ flex: 1, paddingVertical: 0, color: colors.light.tint }}
+          autoCapitalize="none"
         />
       )}
       <TouchableOpacity onPress={fieldButtonFunction}>
-        <Text style={{ color: activeColors.accent, fontWeight: "700" }}>
+        <Text style={{ color: colors.light.accent, fontWeight: "700" }}>
           {fieldButtonLabel}
         </Text>
       </TouchableOpacity>

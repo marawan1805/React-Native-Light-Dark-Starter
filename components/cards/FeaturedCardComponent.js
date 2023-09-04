@@ -1,27 +1,26 @@
 import React, { useContext } from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../config/theme";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 const FeaturedCardComponent = ({ imageSource, title, description }) => {
-  const { theme } = useContext(ThemeContext);
-  let activeColors = colors[theme.mode];
+  const navigation = useNavigation();
 
   return (
-    // Add the background color
     <TouchableOpacity
-      style={[styles.container, { backgroundColor: activeColors.secondary }]}
+      style={[styles.container, { backgroundColor: colors.light.secondary }]}
+      onPress={() => navigation.navigate("Shop", { title: "Featured Items" })}
     >
       <Image style={styles.image} source={imageSource} />
       <View style={styles.textContainer}>
         <Text
-          style={[styles.title, { color: activeColors.text }]}
+          style={[styles.title, { color: colors.light.text }]}
           numberOfLines={1}
         >
           {title}
         </Text>
         <Text
-          style={[styles.description, { color: activeColors.tertiary }]}
+          style={[styles.description, { color: colors.light.tertiary }]}
           numberOfLines={2}
         >
           {description}

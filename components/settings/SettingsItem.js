@@ -13,12 +13,12 @@ const SettingsItem = ({ children, label }) => {
     <View
       style={[
         {
-          backgroundColor: activeColors.secondary,
+          backgroundColor: colors.light.secondary,
         },
         styles.settingsItem,
       ]}
     >
-      <StyledText style={[{ color: activeColors.tertiary }, styles.label]}>
+      <StyledText style={[{ color: colors.light.tertiary }, styles.label]}>
         {label}
       </StyledText>
       {children}

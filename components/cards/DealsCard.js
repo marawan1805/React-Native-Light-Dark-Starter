@@ -2,25 +2,29 @@ import React, { useContext } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { colors } from "../../config/theme";
 import { ThemeContext } from "../../context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 const CardComponent = ({ imageSource, title, description }) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
+  const navigation = useNavigation();
+
   return (
     <TouchableOpacity
-      style={[styles.container, { backgroundColor: activeColors.secondary }]}
+      style={[styles.container, { backgroundColor: colors.light.secondary }]}
+      onPress={() => navigation.navigate("Shop", { title: "Todays Deals" })}
     >
       <Image style={styles.image} source={imageSource} />
       <View style={styles.contentContainer}>
         <Text
-          style={[styles.title, { color: activeColors.text }]}
+          style={[styles.title, { color: colors.light.text }]}
           numberOfLines={1}
         >
           {title}
         </Text>
         <Text
-          style={[styles.description, { color: activeColors.tertiary }]}
+          style={[styles.description, { color: colors.light.tertiary }]}
           numberOfLines={2}
         >
           {description}
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     width: 200,
     backgroundColor: "#FFFFFF",
-    borderRadius: 10,
+    borderRadius: 0,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 100,
-    borderRadius: 10,
+    borderRadius: 0,
   },
   contentContainer: {
     padding: 10,
