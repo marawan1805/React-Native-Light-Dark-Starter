@@ -1,11 +1,12 @@
 import React, { useContext, useState, useRef } from "react";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
-import { View, ScrollView, RefreshControl } from "react-native";
-import { StyleSheet } from "react-native";
+import { View, ScrollView, RefreshControl, StyleSheet } from "react-native";
+
 import CategoryTabSection from "../components/sections/CategoryTabSection";
 import FeaturedItemsSection from "../components/sections/FeaturedItemsSection";
 import HorizontalDealsSection from "../components/sections/HorizontalDealsSection";
+import Banners from "../components/sections/Banners";
 
 const HomeScreens = () => {
   const { theme } = useContext(ThemeContext);
@@ -27,7 +28,7 @@ const HomeScreens = () => {
       showsVerticalScrollIndicator={false}
       style={[
         {
-          backgroundColor: activeColors.primary,
+          backgroundColor: colors.light.primary,
         },
         styles.Container,
       ]}
@@ -37,29 +38,10 @@ const HomeScreens = () => {
       }
     >
       <View style={{ flexGrow: 1 }}>
-        <ScrollView>
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 10,
-              paddingHorizontal: 10,
-            }}
-          ></View>
-
-          <CategoryTabSection />
-        </ScrollView>
+        <Banners />
+        <CategoryTabSection />
         <FeaturedItemsSection />
-        <ScrollView>
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 10,
-              paddingHorizontal: 10,
-            }}
-          ></View>
-
-          <HorizontalDealsSection />
-        </ScrollView>
+        <HorizontalDealsSection />
       </View>
     </ScrollView>
   );

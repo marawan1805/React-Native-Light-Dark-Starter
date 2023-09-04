@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from "react-native";
 import DealsCard from "../cards/DealsCard";
 import { colors } from "../../config/theme";
 import { ThemeContext } from "../../context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 const images = [
   require("../../images/sample_image_1.jpg"),
@@ -17,21 +18,44 @@ const images = [
 const HorizontalDealsSection = ({ selectedCategory }) => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+  const navigation = useNavigation();
 
   return (
     <View>
-      <Text
+      <View
         style={{
-          fontSize: 24,
-          fontWeight: "bold",
-          paddingHorizontal: 10,
-          marginTop: 20,
-          marginBottom: 15,
-          color: activeColors.text,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        Today's Deals
-      </Text>
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: "500",
+            paddingHorizontal: 10,
+            marginTop: 20,
+            marginBottom: 15,
+            color: colors.light.text,
+          }}
+        >
+          Today's Deals
+        </Text>
+        <Text
+          style={{
+            fontSize: 14,
+            paddingHorizontal: 10,
+            marginTop: 20,
+            marginBottom: 15,
+            color: colors.light.red,
+          }}
+          onPress={() =>
+            navigation.navigate("Shop", { title: "Today's Deals" })
+          }
+        >
+          See all
+        </Text>
+      </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {images.map((imageSource, index) => (
           <DealsCard

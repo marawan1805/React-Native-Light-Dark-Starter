@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-starter",
-    "slug": "snack-1e8ed19d-70dd-454e-90d2-1137e7b86ac9",
+    "name": "Indic Fusion",
+    "slug": "indic-fusion",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,16 +18,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.decoderashish.indicfusion"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.decoderashish.indicfusion",
+      "minSdkVersion": "18"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d4bc5a35-b0c1-46ff-9ca4-4d0c6c990686"
+      }
     }
   }
 }

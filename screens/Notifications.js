@@ -5,7 +5,7 @@ import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 
-const CartScreen = () => {
+const Notifications = () => {
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   const navigation = useNavigation();
@@ -16,23 +16,23 @@ const CartScreen = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: activeColors.primary,
+        backgroundColor: colors.light.primary,
       }}
     >
       <Text
         style={{
           fontSize: 24,
           fontWeight: "bold",
-          color: activeColors.tertiary,
+          color: colors.light.tertiary,
           marginBottom: 20,
         }}
       >
-        Your cart is empty
+        Notifications
       </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate("Home")}
         style={{
-          backgroundColor: activeColors.accent,
+          backgroundColor: colors.light.accent,
           paddingHorizontal: 20,
           paddingVertical: 10,
           borderRadius: 5,
@@ -42,7 +42,7 @@ const CartScreen = () => {
           style={{
             fontSize: 16,
             fontWeight: "bold",
-            color: activeColors.primary,
+            color: colors.light.primary,
           }}
         >
           Explore
@@ -52,4 +52,4 @@ const CartScreen = () => {
   );
 };
 
-export default CartScreen;
+export default Notifications;

@@ -10,7 +10,7 @@ const CategoryTabSection = () => {
   let activeColors = colors[theme.mode];
 
   const categoriesScrollViewRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState("Category 1");
+  const [selectedCategory, setSelectedCategory] = useState("Apparels");
 
   const handleCategoryPress = (category, index) => {
     setSelectedCategory(category);
@@ -32,11 +32,17 @@ const CategoryTabSection = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         ref={categoriesScrollViewRef}
+        contentContainerStyle={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        {["Category 1", "Category 2", "Category 3", "Category 4"].map(
+        {["Apparels", "Foods", "Decoration", "Others"].map(
           (category, index) => (
             <CategoryCard
               key={index}
+              index={index + 1}
               title={category}
               onPress={() => handleCategoryPress(category, index)}
               isActive={category === selectedCategory}

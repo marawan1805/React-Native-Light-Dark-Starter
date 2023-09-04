@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { colors } from "../config/theme";
 import { ThemeContext } from "../context/ThemeContext";
 import {
@@ -7,22 +7,67 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
+  ToastAndroid,
 } from "react-native";
 
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { auth, db } from "../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import CustomButton from "../components/CustomButton";
 import InputField from "../components/InputField";
 
 const LoginScreen = ({ navigation }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+
+  const pressLogin = () => {
+    setIsLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        ToastAndroid.show("Logged in.", ToastAndroid.LONG);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (errorCode == "auth/user-not-found") {
+          ToastAndroid.show("Email does not exist.", ToastAndroid.LONG);
+          setIsLoading(false);
+        } else if (errorCode == "auth/wrong-password") {
+          ToastAndroid.show("Password was wrong.", ToastAndroid.LONG);
+          setIsLoading(false);
+        } else if (errorCode == "auth/invalid-email") {
+          ToastAndroid.show("Invailid Email.", ToastAndroid.LONG);
+          setIsLoading(false);
+        } else if (errorCode == "auth/missing-email") {
+          ToastAndroid.show("Email can't be blank.", ToastAndroid.LONG);
+          setIsLoading(false);
+        } else if (errorCode == "auth/weak-password") {
+          ToastAndroid.show(
+            "Password must be atleast 6 digits.",
+            ToastAndroid.LONG
+          );
+          setIsLoading(false);
+        } else if (errorCode == "auth/missing-password") {
+          ToastAndroid.show("Password can't be blank.", ToastAndroid.LONG);
+          setIsLoading(false);
+        } else {
+          ToastAndroid.show(errorCode, ToastAndroid.BOTTOM);
+          setIsLoading(false);
+        }
+      });
+  };
 
   return (
     <SafeAreaView
       style={{
-        backgroundColor: activeColors.primary,
+        backgroundColor: colors.light.primary,
         flex: 1,
         justifyContent: "center",
       }}
@@ -43,15 +88,16 @@ const LoginScreen = ({ navigation }) => {
           style={{
             fontSize: 28,
             fontWeight: "500",
-            color: activeColors.tint,
+            color: colors.light.tint,
             marginBottom: 30,
+            textAlign: "center",
           }}
         >
           Login
         </Text>
 
         <InputField
-          selectionColor={activeColors.tint}
+          selectionColor={colors.light.tint}
           label={"Email ID"}
           icon={
             <MaterialIcons
@@ -61,6 +107,8 @@ const LoginScreen = ({ navigation }) => {
               style={{ marginRight: 5 }}
             />
           }
+          onChangeText={setEmail}
+          value={email.toLowerCase()}
           keyboardType="email-address"
         />
 
@@ -74,26 +122,31 @@ const LoginScreen = ({ navigation }) => {
               style={{ marginRight: 5 }}
             />
           }
+          onChangeText={setPassword}
+          value={password}
           inputType="password"
           fieldButtonLabel={"Forgot?"}
-          fieldButtonFunction={() => {}}
+          fieldButtonFunction={() => navigation.navigate("Register")}
         />
 
         <CustomButton
-          label={"Login"}
-          onPress={() => {
-            navigation.navigate("Footer");
-          }}
+          label={
+            isLoading ? (
+              <ActivityIndicator size="small" color={colors.light.primary} />
+            ) : (
+              "Login"
+            )
+          }
+          onPress={() => pressLogin()}
         />
-
         <Text
           style={{
             textAlign: "center",
-            color: activeColors.tint,
+            color: colors.light.tint,
             marginBottom: 30,
           }}
         >
-          Or, login with ...
+          Or, login with...
         </Text>
 
         <View
@@ -106,7 +159,7 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.secondary,
+              backgroundColor: colors.light.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
@@ -120,7 +173,7 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.secondary,
+              backgroundColor: colors.light.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
@@ -134,7 +187,7 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              backgroundColor: activeColors.secondary,
+              backgroundColor: colors.light.secondary,
               borderRadius: 10,
               paddingHorizontal: 30,
               paddingVertical: 10,
@@ -154,9 +207,9 @@ const LoginScreen = ({ navigation }) => {
             marginBottom: 30,
           }}
         >
-          <Text style={{ color: activeColors.tint }}>New to the app? </Text>
+          <Text style={{ color: colors.light.tint }}>New to the app? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text style={{ color: activeColors.accent, fontWeight: "700" }}>
+            <Text style={{ color: colors.light.accent, fontWeight: "700" }}>
               {" "}
               Register
             </Text>
